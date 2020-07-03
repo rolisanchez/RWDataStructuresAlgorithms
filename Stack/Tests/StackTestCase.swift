@@ -65,4 +65,31 @@ final class StackTestCase: XCTestCase {
         
         XCTAssertEqual(stack, ["Blueberry", "plain", "potato"])
     }
+    
+    func hasBalancedParentheses(_ checkString: String) -> Bool {
+        var parenthesesStack = Stack<Character>()
+        
+        for char in checkString {
+            if char == "(" {
+                parenthesesStack.push(char)
+            } else if char == ")" {
+                // Return early if trying to close unopened parentheses
+                if stack.isEmpty {
+                    return false
+                } else {
+                    parenthesesStack.pop()
+                }
+            }
+        }
+        return parenthesesStack.isEmpty
+    }
+    func test_balancedParentheses() {
+        let balancedString = "hello(world)()"
+        XCTAssertTrue(hasBalancedParentheses(balancedString))
+    }
+    
+    func test_unbalancedParentheses() {
+        let unbalancedString = "(hello(world"
+        XCTAssertFalse(hasBalancedParentheses(unbalancedString))
+    }
 }
