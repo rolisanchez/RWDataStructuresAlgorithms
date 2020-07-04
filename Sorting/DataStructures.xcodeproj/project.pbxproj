@@ -21,11 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0A7AA5FE21EDA21000A15DA7 /* QueueTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AA5FD21EDA20F00A15DA7 /* QueueTestCase.swift */; };
-		0A7AA60021EDA24300A15DA7 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AA5FF21EDA24300A15DA7 /* Queue.swift */; };
-		0ABC822E21E86A5A0008D749 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC822D21E86A5A0008D749 /* Stack.swift */; };
-		0ABC823121E86AC90008D749 /* StackTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC822F21E86AB20008D749 /* StackTestCase.swift */; };
-		DB3010E124AF487F00636647 /* ChallengeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3010E024AF487F00636647 /* ChallengeTestCase.swift */; };
+		0A7AA60021EDA24300A15DA7 /* SortingAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AA5FF21EDA24300A15DA7 /* SortingAlgorithms.swift */; };
+		0A9EACF221EE0BD00019DA14 /* SortingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EACF121EE0BD00019DA14 /* SortingTestCase.swift */; };
 		OBJ_39 /* DataStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "DataStructures::DataStructures::Product" /* DataStructures.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,13 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A7AA5FD21EDA20F00A15DA7 /* QueueTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTestCase.swift; sourceTree = "<group>"; };
-		0A7AA5FF21EDA24300A15DA7 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		0ABC822D21E86A5A0008D749 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
-		0ABC822F21E86AB20008D749 /* StackTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackTestCase.swift; sourceTree = "<group>"; };
-		DB3010E024AF487F00636647 /* ChallengeTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTestCase.swift; sourceTree = "<group>"; };
-		"DataStructures::DataStructures::Product" /* DataStructures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataStructures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"DataStructures::DataStructuresTests::Product" /* DataStructuresTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = DataStructuresTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A7AA5FF21EDA24300A15DA7 /* SortingAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingAlgorithms.swift; sourceTree = "<group>"; };
+		0A9EACF121EE0BD00019DA14 /* SortingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingTestCase.swift; sourceTree = "<group>"; };
+		"DataStructures::DataStructures::Product" /* DataStructures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DataStructures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"DataStructures::DataStructuresTests::Product" /* DataStructuresTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = DataStructuresTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +90,7 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				0ABC822D21E86A5A0008D749 /* Stack.swift */,
-				0A7AA5FF21EDA24300A15DA7 /* Queue.swift */,
+				0A7AA5FF21EDA24300A15DA7 /* SortingAlgorithms.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -105,9 +98,7 @@
 		OBJ_9 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				0A7AA5FD21EDA20F00A15DA7 /* QueueTestCase.swift */,
-				0ABC822F21E86AB20008D749 /* StackTestCase.swift */,
-				DB3010E024AF487F00636647 /* ChallengeTestCase.swift */,
+				0A9EACF121EE0BD00019DA14 /* SortingTestCase.swift */,
 			);
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
@@ -175,7 +166,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = OBJ_5;
@@ -196,8 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				0ABC822E21E86A5A0008D749 /* Stack.swift in Sources */,
-				0A7AA60021EDA24300A15DA7 /* Queue.swift in Sources */,
+				0A7AA60021EDA24300A15DA7 /* SortingAlgorithms.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,9 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				0A7AA5FE21EDA21000A15DA7 /* QueueTestCase.swift in Sources */,
-				DB3010E124AF487F00636647 /* ChallengeTestCase.swift in Sources */,
-				0ABC823121E86AC90008D749 /* StackTestCase.swift in Sources */,
+				0A9EACF221EE0BD00019DA14 /* SortingTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +240,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGET_NAME = DataStructures;
 			};
 			name = Debug;
@@ -277,7 +264,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGET_NAME = DataStructures;
 			};
 			name = Release;
@@ -287,7 +274,7 @@
 			buildSettings = {
 				LD = /usr/bin/true;
 				OTHER_SWIFT_FLAGS = "-swift-version 4.2 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -296,7 +283,7 @@
 			buildSettings = {
 				LD = /usr/bin/true;
 				OTHER_SWIFT_FLAGS = "-swift-version 4.2 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -354,7 +341,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGET_NAME = DataStructuresTests;
 			};
 			name = Debug;
@@ -375,7 +362,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGET_NAME = DataStructuresTests;
 			};
 			name = Release;
