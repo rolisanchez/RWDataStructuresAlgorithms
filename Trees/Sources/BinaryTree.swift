@@ -55,6 +55,12 @@ extension BinaryNode {
         rightChild?.traversePostOrder(visit: visit)
         visit(value)
     }
+    
+    func traversePreOrderOptional(visit: (Element?) -> Void) {
+        visit(value)
+        leftChild != nil ? leftChild?.traversePreOrderOptional(visit: visit) : visit(nil)
+        rightChild != nil ? rightChild?.traversePreOrderOptional(visit: visit) : visit(nil)
+    }
 }
 
 extension BinaryNode: CustomStringConvertible {
