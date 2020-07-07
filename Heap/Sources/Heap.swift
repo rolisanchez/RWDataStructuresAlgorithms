@@ -157,3 +157,23 @@ extension Array where Element: Equatable {
         self = heap.elements
     }
 }
+
+extension Array where Element: Equatable {
+    func isHeap(sortedBy areSorted: @escaping (Element, Element) -> Bool) -> Bool {
+        if isEmpty { return true }
+        
+        for parentIndex in stride(from: count / 2 - 1, through: 0, by: -1) {
+            let parent = self[parentIndex]
+            let leftChildIndex = 2 * parentIndex + 1
+            if areSorted(self[leftChildIndex], parent){
+                return false
+            }
+            let rightChildIndex = leftChildIndex + 1
+            if rightChildIndex < count && areSorted(self[rightChildIndex], parent){
+                return false
+            }
+        }
+        
+        return true
+    }
+}

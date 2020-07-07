@@ -61,4 +61,24 @@ final class HeapTestCase: XCTestCase {
         XCTAssertEqual(Array(heap), [1, 1, 3, 4, 5, 6, 7, 8, 12])
     }
     
+    func test_isHeap() {
+        let maxHeapArray = [
+                  5,
+              4,      2,
+            4, 3,    1
+        ]
+        XCTAssertTrue(maxHeapArray.isHeap(sortedBy: >))
+        let minHeapArray = [
+                  1,
+              2,      10,
+            3, 3,   11, 11
+        ]
+        XCTAssertTrue(minHeapArray.isHeap(sortedBy: <))
+        let invalidHeapArray = [
+               0,
+            1,   -1
+        ]
+        XCTAssertFalse(invalidHeapArray.isHeap(sortedBy: >))
+        XCTAssertFalse(invalidHeapArray.isHeap(sortedBy: <))
+    }
 }
