@@ -32,6 +32,11 @@ import XCTest
 final class HeapTestCase: XCTestCase {
     private let unsortedInts = [1, 12, 3, 4, 1, 6, 8, 7]
     
+    func test_init(){
+        let heap = Heap(unsortedInts, areSorted: <)
+        XCTAssertEqual(unsortedInts.sorted(by: >), Array(heap))
+    }
+    
     func test_peek() {
         let heap = Heap(unsortedInts, areSorted: >)
         XCTAssertEqual(heap.peek(), 12)
@@ -42,5 +47,18 @@ final class HeapTestCase: XCTestCase {
         XCTAssertEqual(heap.removeRoot(), 12)
     }
     
+    func test_remove() {
+        var heap = Heap(unsortedInts, areSorted: >)
+        let index = heap.getFirstIndex(of: 3)!
+        XCTAssertEqual(heap.remove(at: index), 3)
+        XCTAssertEqual(Array(heap), [1, 1, 4, 6, 7, 8, 12])
+
+    }
+
+    func test_insert() {
+        var heap = Heap(unsortedInts, areSorted: >)
+        heap.insert(5)
+        XCTAssertEqual(Array(heap), [1, 1, 3, 4, 5, 6, 7, 8, 12])
+    }
     
 }
