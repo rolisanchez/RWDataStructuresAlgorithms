@@ -96,6 +96,42 @@ class AdjacencyListTestCase: XCTestCase {
         """
         )
     }
-
     
+    func test_getPaths(){
+        var graph = AdjacencyList<String>()
+        
+        let a = graph.addVertex("A")
+        let b = graph.addVertex("B")
+        let c = graph.addVertex("C")
+        let d = graph.addVertex("D")
+        let e = graph.addVertex("E")
+        
+        let ab = GraphEdge(source: a, destination: b, weight: 0)
+        let ac = GraphEdge(source: a, destination: c, weight: 0)
+        let ad = GraphEdge(source: a, destination: d, weight: 0)
+        let ae = GraphEdge(source: a, destination: e, weight: 0)
+        let bc = GraphEdge(source: b, destination: c, weight: 0)
+        let bd = GraphEdge(source: b, destination: d, weight: 0)
+        let ce = GraphEdge(source: c, destination: e, weight: 0)
+        let de = GraphEdge(source: d, destination: e, weight: 0)
+        
+        for edge in [ab, ac, ad, ae, bc, bd, ce, de] {
+            graph.add(edge)
+        }
+        
+        let cb = GraphEdge(source: c, destination: b, weight: 0)
+        let db = GraphEdge(source: d, destination: b, weight: 0)
+        
+        XCTAssertEqual(
+            graph.getPaths(from: a, to: e),
+            [ [ab, bc, ce],
+              [ab, bd, de],
+              [ac, cb, bd, de],
+              [ac, ce],
+              [ad, db, bc, ce],
+              [ad, de],
+              [ae]
+            ]
+        )
+    }
 }

@@ -27,60 +27,50 @@
 /// THE SOFTWARE.
 
 
-protocol Graph {
-    associatedtype Element
-    
-    typealias Edge = GraphEdge<Element>
+enum Dijsktra<Graph: DataStructures.Graph> where Graph.Element: Hashable {
+    typealias Edge = Graph.Edge
     typealias Vertex = Edge.Vertex
     
-    var vertices: [Vertex] { get }
-    
-    @discardableResult mutating func addVertex(_: Element) -> Vertex
-    func getEdges(from: Vertex) -> [Edge]
-}
-
-struct GraphVertex<Element>{
-    let index: Int
-    let element: Element
-}
-
-extension GraphVertex: Equatable where Element: Equatable { }
-
-extension GraphVertex: Hashable where Element: Hashable { }
-
-struct GraphEdge<Element>{
-    typealias Vertex = GraphVertex<Element>
-    
-    let source: Vertex
-    let destination: Vertex
-    let weight: Double
-}
-
-extension GraphEdge: Equatable where Element: Equatable { }
-extension GraphEdge: Hashable where Element: Hashable { }
-
-extension Graph where Element: Hashable {
-    func getPaths(from source: Vertex, to destination: Vertex) -> Set<[Edge]> {
-        var completedPaths: Set<[Edge]> = []
-        var activePaths = Set( getEdges(from: source).map { [$0] })
-        while !activePaths.isEmpty {
-            print("activePaths = \(activePaths)")
-            print("completedPaths = \(completedPaths)")
-            for path in activePaths {
-                defer { activePaths.remove(path) }
-                let pathEnd = path.last!.destination
-                if pathEnd == destination {
-                    completedPaths.insert(path)
-                    continue
+    static func getEdges(alongPathsFrom source: Vertex, graph: Graph) -> [Vertex: Edge] {
+        var edges: [Vertex: Edge] = [:]
+        
+        func getWeight(to destination: Vertex) -> Double {
+            return getShortestPath(to: destination, edgesAlongPaths: edges)
+                .map { $0.weight }
+                .reduce(0, +)
+        }
+        
+        var priorityQueue = PriorityQueue { getWeight(to: $0) < getWeight(to: $1)}
+        priorityQueue.enqueue(source)
+        
+        while let vertex = priorityQueue.dequeue(){
+            graph.getEdges(from: vertex)
+                .filter {
+                    $0.destination == source
+                        ? false
+                        : edges[$0.destination] == nil
+                        || getWeight(to: vertex) + $0.weight < getWeight(to: $0.destination)
                 }
-                
-                getEdges(from: pathEnd).filter {
-                    !path.map { $0.source }.contains($0.destination)
-                }.forEach {
-                    activePaths.insert(path + [$0])
-                }
+            .forEach { newEdgeFromVertex in
+                edges[newEdgeFromVertex.destination] = newEdgeFromVertex
+                priorityQueue.enqueue(newEdgeFromVertex.destination)
             }
         }
-        return completedPaths
+        return edges
     }
+    
+    static func getShortestPath(to destination: Vertex, edgesAlongPaths: [Vertex: Edge]) -> [Edge] {
+        var shortestPath: [Edge] = []
+        var destination = destination
+        while let edge = edgesAlongPaths[destination] {
+            shortestPath = [edge] + shortestPath
+            destination = edge.source
+        }
+        return shortestPath
+    }
+    
+    static func getShortestPath(from source: Vertex, to destination: Vertex, graph: Graph) -> [Edge] {
+        return getShortestPath(to: destination, edgesAlongPaths: getEdges(alongPathsFrom: source, graph: graph))
+    }
+    
 }
