@@ -73,4 +73,10 @@ enum Dijsktra<Graph: DataStructures.Graph> where Graph.Element: Hashable {
         return getShortestPath(to: destination, edgesAlongPaths: getEdges(alongPathsFrom: source, graph: graph))
     }
     
+    static func getShortestPaths(from source: Vertex, graph: Graph) -> [Vertex: [Edge]]{
+        let edges = getEdges(alongPathsFrom: source, graph: graph)
+        let paths = graph.vertices.map { getShortestPath(to: $0, edgesAlongPaths: edges) }
+        return Dictionary(uniqueKeysWithValues: zip(graph.vertices, paths))
+    }
+    
 }

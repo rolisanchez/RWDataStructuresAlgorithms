@@ -70,6 +70,24 @@ final class DijkstraTestCase: XCTestCase {
         let shortestPath = Dijsktra.getShortestPath(from: a, to: d, graph: graph)
         XCTAssertEqual(String(shortestPath: shortestPath), "AGCED")
     }
+    
+    func test_getShortestPaths() {
+        let shortestPaths = [
+            a: nil,
+            b: "AGCEB",
+            c: "AGC",
+            d: "AGCED",
+            e: "AGCE",
+            f: "AGHF",
+            g: "AG",
+            h: "AGH"
+        ]
+        
+        XCTAssertEqual(
+            shortestPaths,
+            Dijsktra.getShortestPaths(from: a, graph: graph).mapValues( String.init(shortestPath:))
+        )
+    }
 }
 
 private extension String {
@@ -83,3 +101,4 @@ private extension String {
         }
     }
 }
+
